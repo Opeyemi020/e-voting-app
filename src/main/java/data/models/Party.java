@@ -1,14 +1,11 @@
 package data.models;
 
-import jdk.jfr.DataAmount;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
+@Setter
 @Document("Parties")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,5 +15,5 @@ public class Party {
     @NonNull
     private String name;
     @NonNull
-    private String candidates;
+    private String candidate;
 }
