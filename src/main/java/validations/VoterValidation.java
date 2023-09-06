@@ -1,7 +1,7 @@
 package validations;
 
 import data.models.Voter;
-import data.repository.VoterRepository;
+import data.repository.PollRepository;
 import dtos.requests.RegisterVoterRequest;
 import exceptions.*;
 
@@ -14,7 +14,7 @@ public class VoterValidation {
     public static void registeredVoterValidation(Optional<Voter> voter){
         if (voter.isEmpty())throw new VoterNotRegisteredException("Not a registered voter!!");
     }
-    public static void validateDuplicateVoter(String emailAddress, VoterRepository repository){
+    public static void validateDuplicateVoter(String emailAddress, PollRepository repository){
         if (repository.findByEmailAddress(emailAddress).isPresent())
             throw new VoterAlreadyExistException(String.format(VOTER_WITH_EMAIL_EXISTS, emailAddress));
     }

@@ -23,7 +23,7 @@ public class PollServiceImplementation implements PollService{
 
     @Override
     public VoteResponse castVote(VoteRequest voteRequest) {
-        validateDuplicateVoter(voteRequest.getVoterId(), (VoterRepository) pollRepository);
+        validateDuplicateVoter(voteRequest.getVoterId(),  pollRepository);
         return Mapper.map(pollRepository.save(Mapper.map(voteRequest)));
     }
 

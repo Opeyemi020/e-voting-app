@@ -8,7 +8,6 @@ import dtos.responses.RegisterVotersResponse;
 import dtos.responses.VoterLoginResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import utils.Mapper;
 
@@ -34,6 +33,7 @@ public class VoterServiceImplementation implements VoterService{
     validateOverVote(request.getEmailAddress(),voterRepository);
     Voter voter = Mapper.map(request,Voter.class);
     hashPassword(request.getPassword());
+        assert voter != null;
         voterRepository.save(voter);
         RegisterVotersResponse
                 response = buildVoterResponse(voter);
@@ -54,7 +54,7 @@ public class VoterServiceImplementation implements VoterService{
         Voter voter = foundVoter.get();
         checkPassword(request.getPassword(), voter.getPassword());
         log.info(String.format(VOTER_SUCCESSFULLY_LOGGED_IN));
-        return VoterLoginResponse.build()
+        return VoterLoginResponse.builder()
                 .id(voter.getId())
                 .message(String.format(VOTER_SUCCESSFULLY_LOGGED_IN))
                 .build();
