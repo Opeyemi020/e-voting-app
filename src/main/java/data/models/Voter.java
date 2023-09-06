@@ -2,7 +2,9 @@ package data.models;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
+@Data
 
 public class Voter {
 

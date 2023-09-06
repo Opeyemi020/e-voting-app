@@ -2,7 +2,9 @@ package utils;
 
 import data.models.Party;
 import data.models.Poll;
+import data.models.Voter;
 import dtos.requests.RegisterPartyRequest;
+import dtos.requests.RegisterVoterRequest;
 import dtos.requests.VoteRequest;
 import dtos.responses.RegisterPartyResponse;
 import dtos.responses.VoteResponse;
@@ -39,5 +41,9 @@ public class Mapper {
         response.setName(party.getName());
         response.setCandidate(party.getCandidate());
         return response;
+    }
+
+    public static Voter map(RegisterVoterRequest request, Class<Voter> voterClass) {
+        return null;
     }
 }
