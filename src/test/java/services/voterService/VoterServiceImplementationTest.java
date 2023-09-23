@@ -19,12 +19,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class VoterServiceImplementationTest {
 
-    @Autowired
-    private VoterService voterService;
-    @Autowired
-    private VoterRepository voterRepository;
+    private final VoterService voterService;
 
-    private RegisterVoterRequest voterRequest;
+    private final VoterRepository voterRepository;
+
+    private final RegisterVoterRequest voterRequest;
+
+    @Autowired
+    VoterServiceImplementationTest(VoterService voterService, VoterRepository voterRepository, RegisterVoterRequest voterRequest) {
+        this.voterService = voterService;
+        this.voterRepository = voterRepository;
+        this.voterRequest = voterRequest;
+    }
 
     @BeforeEach
     public void setUp() {
